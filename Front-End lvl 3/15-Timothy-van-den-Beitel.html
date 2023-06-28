@@ -1,0 +1,15 @@
+<script>
+    let userNaam = sessionStorage.getItem("naam");
+    if(userNaam){
+        alert("Welkom terug, "+ userNaam);
+    }else {
+        let userInput = prompt("vul je naam in");
+ 
+    sessionStorage.setItem("naam", userInput);
+    let userNaam = sessionStorage.getItem("naam");
+
+    alert("Hallo, " + userNaam);
+    };
+
+        
+ </script>

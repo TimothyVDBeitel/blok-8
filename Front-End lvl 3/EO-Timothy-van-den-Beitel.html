@@ -1,0 +1,68 @@
+<script>
+
+    const landen = [
+    "Italy", "Luxembourg", "Belgium", "Denmark", "Finland", "France", "Slovakia", "Slovenia", "Germany", "Greece", "Ireland", "Netherlands","Portugal", "Spain", "Sweden", "United Kingdom", "Cyprus","Lithuania", "Czech Republic", "Estonia", "Hungary", "Austria", "Poland"
+    ];
+    
+    const hoofdsteden = [
+        "Rome", "Luxembourg", "Brussels", "Copenhagen", "Helsinki", "Paris", "Bratislava","Ljubljana", "Berlin", "Athens", "Dublin", "Amsterdam", "Lisbon", "Madrid", "Stockholm", "London", "Nicosia", "Vilnius", "Prague", "Tallin", "Budapest", "Vienna", "Warsaw"
+    ];
+ 
+
+        let Score = 0;
+        let pogingen= 0;      
+
+  
+
+
+    let numGames = prompt("hoe vaak wil je spelen?");
+    let antwoorden="";
+
+    for(let i=0; i < numGames; i++){
+        Game();
+    };
+
+    function Game(){
+        let random = Math.floor(Math.random() * landen.length);
+
+        for(hoofdstad of hoofdsteden){
+            antwoorden = antwoorden + hoofdstad + "\n";
+        }
+
+        let vraag = prompt("wat is de hoofdstad van: "+ landen[random] + "\n" + antwoorden) ;
+        alert(vraag);
+
+        if(vraag == hoofdsteden[random]){
+            alert('goed');
+            Score++;
+        } 
+        else {
+            alert('fout');
+        }
+        pogingen++;
+  
+    }
+
+    
+        let aantalScore = sessionStorage.getItem("score");
+        let aantalGames = sessionStorage.getItem("poging");  
+
+    if(aantalGames & aantalScore){
+        sessionStorage.setItem("totalgames", aantalGames);
+        sessionStorage.setItem("totalscore", aantalScore);
+        let totalScore = sessionStorage.getItem("totalscore");
+        let totalGames = sessionStorage.getItem("totalgames");
+
+        alert("Score: " + totalScore + " Pogingen: " + totalGames);
+    // sessionStorage.removeItem('score')
+    // sessionStorage.removeItem('poging')
+    } else {
+
+            sessionStorage.setItem("poging", pogingen);
+            sessionStorage.setItem("score", Score);
+            let aantalScore = sessionStorage.getItem("score");
+            let aantalGames = sessionStorage.getItem("poging");
+            alert("Score: " + aantalScore + " Pogingen: " + aantalGames);
+
+    }
+    </script>
